@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Founder Training</title>
+  </head>
+  <body>
+    <h1>Day 1</h1>
+
+    <input id="spend" placeholder="Ad Spend">
+    <input id="revenue" placeholder="Revenue">
+    <button onclick="calculate()">Calculate ROI</button>
+
+    <p id="result"></p>
+
+    <script>
+      function calculate() {
+        const spend = Number(document.getElementById("spend").value);
+        const revenue = Number(document.getElementById("revenue").value);
+
+        const roi = ((revenue - spend) / spend) * 100;
+
+        document.getElementById("result").innerText = "ROI: " + roi.toFixed(2) + "%";
+      }
+    </script>
+  </body>
+</html>
