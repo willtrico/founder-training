@@ -12,15 +12,6 @@
 
     <p id="result"></p>
 
-    <script>
-      function calculate() {
-        const spend = Number(document.getElementById("spend").value);
-        const revenue = Number(document.getElementById("revenue").value);
-
-        const roi = ((revenue - spend) / spend) * 100;
-
-        document.getElementById("result").innerText = "ROI: " + roi.toFixed(2) + "%";
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
