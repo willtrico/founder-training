@@ -4,6 +4,7 @@ function calculate() {
   const spend = Number(document.getElementById("spend").value);
   const revenue = Number(document.getElementById("revenue").value);
   const costOfGoods = Number(document.getElementById("costOfGoods").value);
+  const campaignName = document.getElementById("campaignName").value;
 
   if (!spend || !revenue || !costOfGoods) {
     document.getElementById("result").innerText = 
@@ -15,6 +16,7 @@ function calculate() {
   const roi = (profit / spend) * 100;
 
   const campaign = {
+    campaignName: campaignName,
     spend: spend,
     revenue: revenue,
     costOfGoods: costOfGoods,
@@ -28,7 +30,7 @@ function calculate() {
 
 
   document.getElementById("result").innerText =
-  "Profit: $" + profit.tofixed(2) +  
+  "Profit: $" + profit.toFixed(2) +  
   " | ROI: " + roi.toFixed(2) + "%";
 }
 
@@ -43,7 +45,8 @@ function renderCampaigns() {
     const item = document.createElement("li");
 
     item.innerText =
-    "Spend: $" + campaign.spend +
+    "Campaign Name: " +campaign.campaignName +
+    " | Spend: $" + campaign.spend +
     " | Revenue: $" + campaign.revenue +
     " | Cost of goods: $" +campaign.costOfGoods +
     " | Profit: $" +campaign.profit +
