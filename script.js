@@ -1,4 +1,4 @@
-const campaigns =[];
+let campaigns = JSON.parse(localStorage.getItem("campaigns")) || [];
 
 function calculate() {
   const spend = Number(document.getElementById("spend").value);
@@ -26,7 +26,10 @@ function calculate() {
 
   campaigns.push(campaign);
 
+  localStorage.setItem("campaigns", JSON.stringify(campaigns));
+
   renderCampaigns();
+  updateSummary();
 
 
   document.getElementById("result").innerText =
@@ -54,4 +57,39 @@ function renderCampaigns() {
 
     list.appendChild(item);
   }
+}
+
+function updateSummary() {
+
+  let totalSpend = 0;
+  let totalRevenue = 0;
+  let totalcostOfGoods = 0;
+  let totalProfit = 0;
+  let totalROI = 0;
+
+  for (let i = 0; i < campaigns.length; i++) {
+    const campaign = campaigns[i];
+
+    totalSpend += campaign.spend;
+    totalRevenue += campaign.revenue;
+    totalcostOfGoods += campaign.costOfGoods;
+    totalProfit += campaign.profit;
+    totalROI += campaign.roi;
+  }
+
+  const avgROI = campaigns.length ? totalROI / campaigns.length : 0;
+
+  document.getElementById("totalSpend").innerText = totalSpend.toFixed(2);
+  document.getElementById("totalRevenue").innerText = totalRevenue.toFixed(2);
+  document.getElementById("totalcostOfGoods").innerText = totalcostOfGoods.toFixed(2);
+  document.getElementById("totalProfit").innerText = totalProfit.toFixed(2);
+  document.getElementById("avgROI").innerText = avgROI.toFixed(2);
+}
+
+renderCampaigns();
+
+function clearCampaigns() {
+  localStorage.removeItem("campaigns");
+  campaigns = [];
+  renderCampaigns();
 }

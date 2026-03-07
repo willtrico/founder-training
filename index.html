@@ -25,13 +25,26 @@
     }
 
     button {
-      padding: 8px 14px;
+      padding: 10px 14px;
       font-size: 14px;
       cursor: pointer;
       background-color: #4CAF50;
       color: white;
       border: none;
       border-radius: 4px; 
+    }
+
+    #clearButton {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #clearButton:hover {
+      background-color: #c0392b;
     }
 
     #result {
@@ -48,11 +61,22 @@
     <input id="revenue" placeholder="Revenue">
     <input id="costOfGoods" placeholder="Cost of goods">
     <button onclick="calculate()">Calculate ROI</button>
+    <button id="clearButton" onclick="clearCampaigns()">Clear Campaigns</button>
 
     <p id="result"></p>
 
     <h2>Campaign Results</h2>
     <ul id="campaignList"></ul>
+
+    <h2>Campaign Summary</h2>
+
+  <div id="summary">
+    <p>Total Spend: $<span id="totalSpend">0</span></p>
+    <p>Total Revenue: $<span id="totalRevenue">0</span></p>
+    <p>Total Cost of Goods: $<span id="totalcostOfGoods">0</span></p>
+    <p>Total Profit: $<span id="totalProfit">0</span></p>
+    <p>Average ROI: <span id="avgROI">0</span>%</p>
+  </div>
   
 
     <script src="script.js"></script>
