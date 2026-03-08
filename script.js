@@ -45,15 +45,16 @@ function renderCampaigns() {
   for (let i = 0; i < campaigns.length; i++) {
     const campaign = campaigns[i];
 
-    const item = document.createElement("li");
+    const item = document.createElement("tr");
 
-    item.innerText =
-    "Campaign Name: " +campaign.campaignName +
-    " | Spend: $" + campaign.spend +
-    " | Revenue: $" + campaign.revenue +
-    " | Cost of goods: $" +campaign.costOfGoods +
-    " | Profit: $" +campaign.profit +
-    " | ROI: " + campaign.roi.toFixed(2) + "%";
+   item.innerHTML =
+    "<td>" + campaign.campaignName + "</td>" +
+    "<td>$" + campaign.spend + "</td>" +
+    "<td>$" + campaign.revenue + "</td>" +
+    "<td>$" + campaign.costOfGoods + "</td>" +
+    "<td>$" + campaign.profit.toFixed(2) + "</td>" +
+    "<td>" + campaign.roi.toFixed(2) + "%</td>" +
+    '<td><button class="deleteButton" onclick="deleteCampaign(' + i + ')">Delete</button></td>';
 
     list.appendChild(item);
   }
@@ -91,5 +92,14 @@ renderCampaigns();
 function clearCampaigns() {
   localStorage.removeItem("campaigns");
   campaigns = [];
+  renderCampaigns();
+}
+
+function deleteCampaign(index) {
+
+  campaigns.splice(index, 1);
+
+  localStorage.setItem("campaigns", JSON.stringify(campaigns));
+
   renderCampaigns();
 }
