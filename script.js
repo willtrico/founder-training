@@ -54,7 +54,9 @@ function renderCampaigns() {
     "<td>$" + campaign.costOfGoods + "</td>" +
     "<td>$" + campaign.profit.toFixed(2) + "</td>" +
     "<td>" + campaign.roi.toFixed(2) + "%</td>" +
-    '<td><button class="deleteButton" onclick="deleteCampaign(' + i + ')">Delete</button></td>';
+    '<td><button onclick="editCampaign(' + i + ')">Edit</button>\
+    <button class="deleteButton" onclick="deleteCampaign(' + i + ')">Delete</button>\
+    </td>';
 
     list.appendChild(item);
   }
@@ -110,4 +112,20 @@ campaigns.sort(function(a, b) {
 });
 
 renderCampaigns();
+}
+
+function editCampaign(index) {
+
+  const campaign=campaigns[index];
+
+  document.getElementById("campaignName").value = campaign.campaignName;
+  document.getElementById("spend").value = campaign.spend;
+  document.getElementById("revenue").value = campaign.revenue;
+  document.getElementById("costOfGoods").value = campaign.costOfGoods;
+
+  campaigns.splice(index, 1);
+
+  localStorage.setItem("campaigns", JSON.stringify(campaigns));
+
+  renderCampaigns();
 }
