@@ -54,7 +54,7 @@ function renderCampaigns() {
     "<td>$" + campaign.costOfGoods + "</td>" +
     "<td>$" + campaign.profit.toFixed(2) + "</td>" +
     "<td>" + campaign.roi.toFixed(2) + "%</td>" +
-    '<td><button onclick="editCampaign(' + i + ')">Edit</button>\
+    '<td><button class="editButton" onclick="editCampaign(' + i + ')">Edit</button>\
     <button class="deleteButton" onclick="deleteCampaign(' + i + ')">Delete</button>\
     </td>';
 
