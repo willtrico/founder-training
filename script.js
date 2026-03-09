@@ -103,3 +103,11 @@ function deleteCampaign(index) {
 
   renderCampaigns();
 }
+
+function sortByROI() {
+campaigns.sort(function(a, b) {
+  return b.roi -a.roi;
+});
+
+renderCampaigns();
+}
